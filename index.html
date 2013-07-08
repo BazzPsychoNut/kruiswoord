@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google Search API Sample</title>
+    <script src="https://www.google.com/jsapi"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	
+		// load google search module
+		google.load('search', '1');
+
+		var imageSearch;
+		
+		// set search complete function: display 4 search results in the "content" div
+		function searchComplete() {
+			// Check that we got results
+			if (! imageSearch.results || ! imageSearch.results.length) 
+				return null;
+				
+			// Grab our content div, clear it.
+			var contentDiv = document.getElementById('content');
+			contentDiv.innerHTML = '';
+
+			// Loop through first four results, printing them to the page.
+			var results = imageSearch.results;
+			for (var i = 0; i < 4; i++) {
+				// For each result write it's title and image to the screen
+				var result = results[i];
+				console.log(result);
+				var imgContainer = document.createElement('div');
+				imgContainer.style.float = "left";
+				var newImg = document.createElement('img');
+
+				// There is also a result.url property which has the escaped version
+				newImg.src = result.tbUrl;
+				imgContainer.appendChild(newImg);
+
+				// Put our title + image in the content
+				contentDiv.appendChild(imgContainer);
+			}
+		}
+		
+		// initialize the google image search object
+		function OnLoad() {
+      
+			// Create an Image Search instance.
+			imageSearch = new google.search.ImageSearch();
+
+			// Set searchComplete as the callback function when a search is 
+			// complete.  The imageSearch object will have results in it.
+			imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+
+			// Find me 4 search results
+			imageSearch.setRestriction(
+				google.search.ImageSearch.RESTRICT_IMAGESIZE,
+				google.search.ImageSearch.IMAGESIZE_MEDIUM);
+			imageSearch.setRestriction(
+				google.search.ImageSearch.RESTRICT_FILETYPE,
+				google.search.ImageSearch.FILETYPE_PNG);
+			
+			// Include the required Google branding
+			google.search.Search.getBranding('branding');
+		}
+		google.setOnLoadCallback(OnLoad);
+
+		
+		$(document).ready(function() {
+			// pretend that the li elements are links
+			$("li").hover(function() {
+				$(this).css({'text-decoration':'underline', 'color':'blue', 'cursor':'pointer'});
+			}, function () {
+				$(this).css({'text-decoration':'none', 'color':'black', 'cursor':'auto'});
+			});
+			
+			// execute search on click
+			$("li").click(function() {
+				imageSearch.execute($(this).text());
+			});
+		});
+    </script>
+
+  </head>
+  <body style="font-family: Arial; border: 0 none;">
+    <div id="branding"></div><br />
+    <div id="content"></div>
+	<br style="clear:both;" />
+	<div id="descriptions">
+		<ol>
+			<li>gastank</li>
+			<li>woord</li>
+			<li>verlies</li>
+			<li>poep</li>
+		</ol>
+	</div>
+	<div id="puzzle_container">
+		<table id="puzzle_board">
+			<tr>
+				<td class="closed"></td>
+				<td class="">1</td>
+				<td class="">2</td>
+				<td class=""></td>
+				<td class="closed"></td>
+			</tr>
+			<tr>
+				<td class="">3</td>
+				<td class="closed"></td>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class="">4</td>
+			</tr>
+			<tr>
+				<td class="">5</td>
+				<td class="">6</td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class=""></td>
+			</tr>
+			<tr>
+				<td class="">7</td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class=""></td>
+			</tr>
+			<tr>
+				<td class="closed"></td>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class="">8</td>
+				<td class=""></td>
+			</tr>
+			<tr>
+				<td class="closed"></td>
+				<td class="">9</td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class="closed"></td>
+			</tr>
+			<tr>
+				<td class="">10</td>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class=""></td>
+				<td class="closed"></td>
+			</tr>
+			<tr>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class="">11</td>
+				<td class=""></td>
+				<td class="">12</td>
+			</tr>
+			<tr>
+				<td class="">13</td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class=""></td>
+			</tr>
+			<tr>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class=""></td>
+				<td class="closed"></td>
+				<td class=""></td>
+			</tr>
+			<tr>
+				<td class="closed"></td>
+				<td class="">14</td>
+				<td class=""></td>
+				<td class=""></td>
+				<td class="closed"></td>
+			</tr>
+		</table>
+	</div>
+  </body>
+</html>

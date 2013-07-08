@@ -1,0 +1,7 @@
+# ignore everything in config folder
+config
+
+# ignore the Zend Studio files
+.settings
+.buildpath
+.project
