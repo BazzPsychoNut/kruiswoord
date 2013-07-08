@@ -1095,7 +1095,6 @@ pyrenees,8
 pyreneeën,9
 qatar,5
 quirinaal,9
-ram,3
 rsi,3
 ram,3
 randstad,8
