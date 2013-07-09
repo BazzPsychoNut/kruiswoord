@@ -35,7 +35,7 @@ function searchComplete() {
 // initialize the google image search object
 function OnLoad() {
   
-		// Create an Image Search instance.
+	// Create an Image Search instance.
 	imageSearch = new google.search.ImageSearch();
 
 	// Set searchComplete as the callback function when a search is 
