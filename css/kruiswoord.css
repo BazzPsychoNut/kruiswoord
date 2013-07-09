@@ -1,4 +1,5 @@
-body		{ font-family:Tahoma, Arial; font-size:16px; }
+body					{ font-family:Tahoma, Arial; font-size:16px; }
+#puzzle_container		{ width:600px; margin:50px auto; }
 
 /* puzzle board */
 table#puzzle_board td 	{ height:40px; width:40px; border:1px solid black; vertical-align:middle; }

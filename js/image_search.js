@@ -16,18 +16,22 @@ function searchComplete() {
 	// Loop through first four results, printing them to the page.
 	var results = imageSearch.results;
 	for (var i = 0; i < 4; i++) {
-		// For each result write it's title and image to the screen
+		
+		if (! results[i])
+			return;
+		
+		// For each result write it's image to the screen
 		var result = results[i];
-		console.log(result);
+		
 		var imgContainer = document.createElement('div');
 		imgContainer.style.float = "left";
 		var newImg = document.createElement('img');
 
 		// There is also a result.url property which has the escaped version
-		newImg.src = result.tbUrl;
+		newImg.src = result.tbUrl; // use the cached image rather than the actual image that might be gone
 		imgContainer.appendChild(newImg);
 
-		// Put our title + image in the content
+		// Put our image in the content
 		contentDiv.appendChild(imgContainer);
 	}
 }
@@ -37,6 +41,7 @@ function OnLoad() {
   
 	// Create an Image Search instance.
 	imageSearch = new google.search.ImageSearch();
+	console.log(imageSearch);
 
 	// Set searchComplete as the callback function when a search is 
 	// complete.  The imageSearch object will have results in it.

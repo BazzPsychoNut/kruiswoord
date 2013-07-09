@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	// pretend that the li elements are links
 	$("li").hover(function() {
 		$(this).css({'text-decoration':'underline', 'color':'blue', 'cursor':'pointer'});
