@@ -29,6 +29,7 @@ function searchComplete() {
 
 		// There is also a result.url property which has the escaped version
 		newImg.src = result.tbUrl; // use the cached image rather than the actual image that might be gone
+		newImg.height = 50;
 		imgContainer.appendChild(newImg);
 
 		// Put our image in the content
@@ -51,9 +52,10 @@ function OnLoad() {
 	imageSearch.setRestriction(
 		google.search.ImageSearch.RESTRICT_IMAGESIZE,
 		google.search.ImageSearch.IMAGESIZE_MEDIUM);
-	imageSearch.setRestriction(
-		google.search.ImageSearch.RESTRICT_FILETYPE,
-		google.search.ImageSearch.FILETYPE_PNG);
+//	imageSearch.setRestriction(
+//		google.search.ImageSearch.RESTRICT_FILETYPE,
+//		google.search.ImageSearch.FILETYPE_PNG);
+	imageSearch.setSiteRestriction('photobucket.com');
 	
 	// Include the required Google branding
 	google.search.Search.getBranding('branding');
